@@ -1,0 +1,16 @@
+$main-transition : .2s;
+$Yellow:hsl(51, 100%, 49%);
+$soft-red: hsl(7, 99%, 70%);
+$silver: hsl(210, 4%, 67%);
+$light-black: #696D70;
+@mixin media-md {
+    @media screen and (min-width: 768px) {
+    @content;
+    }
+}
+
+@mixin media-lg {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}

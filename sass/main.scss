@@ -1,0 +1,270 @@
+/* font-family: 'Barlow', sans-serif;
+font-family: 'Fraunces', serif;  */
+@import "componant/config",
+"componant/menu";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Fraunces', serif;
+}
+
+// start content
+.content{
+    .container-fluid{
+        .row>*{
+            padding: 0;
+        }
+        padding: 0;
+        overflow: hidden;
+
+        img.desktop{
+        display: none;
+        }
+
+        img{
+            width: 100%;
+        }
+        .info{
+            padding: 50px 40px;
+            text-align: center;
+            h1{
+                margin-bottom: 25px;
+                font-size: 30px;
+            }
+            p{
+                color: hsl(232, 10%, 55%);
+                margin-bottom: 20px;
+            }
+            a{
+                text-decoration: none;
+                color: #000;
+                text-transform: uppercase;
+                font-family: 'Fraunces', serif;
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    bottom: -1px;
+                    left: -8px;
+                    width: 130px;
+                    height: 10px;
+                    border-radius: 20px;
+                    z-index: -1;
+                    transition: $main-transition;
+                }
+                &.yellow::after{
+                    background-color: #FFF2BB;
+
+                }
+                &.red::after{
+                    background-color: #FDDCD5;
+                }
+
+                &.yellow:hover::after{
+                    background-color: #FFE016;
+                }
+
+                &.red:hover::after{
+                    background-color: #FF7766;
+                }
+
+            }
+        }
+        .graphic{
+            background-image: url("../images/mobile/image-graphic-design.jpg");
+        }
+        .photography{
+            background-image: url("../images/mobile/image-photography.jpg");
+        }
+        .graphic,
+        .photography{
+            background-size: cover;
+            padding: 400px 20px 50px;
+            text-align: center;
+            h1{
+                position: relative;
+                margin-bottom: 25px;
+                font-size: 30px;
+            }
+        }
+        .graphic{
+            color :hsl(167, 40%, 24%);  
+        }
+        .photography{
+            color: hsl(198, 62%, 26%);
+        }
+    }
+
+    @include media-md{
+        &{
+            .container-fluid{
+                .row:first-of-type{
+                    flex-direction: row-reverse;
+                }
+                img.desktop{
+                display: block;
+                }
+                img.mobile{
+                    display: none;
+                }
+                .info{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: left;
+                    padding: 0px 50px;
+
+                    p{
+                        max-width: 450px;
+                    }
+                }
+                .graphic{
+                    background-image: url("../images/desktop/image-graphic-design.jpg");
+                }
+                .photography{
+                    background-image: url("../images/desktop/image-photography.jpg");
+                }
+                .graphic,.photography{
+                    p{
+                        max-width: 400px;
+                        margin: 0 auto;
+                    }
+                }
+        }
+    }
+}
+
+    @include media-lg{
+        &{
+            .container-fluid{
+                .info{
+                    padding: 0px 120px;
+
+                    h1{
+                        font-size: 45px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+// start Testimonials
+.Testimonials{
+    padding: 60px 0;
+    text-align: center;
+
+    .container h2{
+        color: $silver;
+        margin-bottom: 70px;
+        letter-spacing: 3px;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 50px;
+        div:not(:last-child){
+            margin-bottom: 30px;
+        }
+        img{
+            width: 100px;
+            margin-bottom: 40px;
+        }
+        p{
+            color: $light-black;
+            padding: 0 10px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        span{
+            color: silver;
+        }
+    }
+
+    @include media-md{
+        &{
+            padding: 100px 0;
+        }
+    }
+}
+
+// start portfoilo
+.portfoilo{
+    display: flex;
+    flex-wrap: wrap;
+
+    .img-cont.desktop{
+        display: none;
+    }
+    .img-cont{
+        flex-basis: 50%;
+        img{
+            max-width: 100%;
+        }
+    }
+    
+    @include media-md{
+        &{
+            .img-cont.desktop{
+                display: block;
+            }
+            .img-cont.mobile{
+                display: none;
+            }
+            
+            .img-cont{
+                flex-basis: 25%;
+            }
+        }
+    }
+}
+
+// start footer
+footer{
+    text-align: center;
+    background-color: #90D4C5;
+    color: hsl(168, 34%, 41%);
+    padding: 40px 0;
+
+    .logo{
+        margin-bottom: 30px;
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+
+        li{
+            cursor: pointer;
+            transition: $main-transition;
+        }
+        &:nth-of-type(1) {
+            margin-bottom: 50px;
+            li:not(:last-child){
+                margin-right: 50px;
+            }
+        }
+        &:nth-of-type(2) li:not(:last-child){
+            margin-right: 25px;
+        }
+    
+        li:hover{
+            color: #fff;
+        }
+    }
+    @include media-lg{
+        &{
+            padding: 70px 0;
+        }
+    }
+}
